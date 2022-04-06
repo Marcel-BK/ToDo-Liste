@@ -1,0 +1,93 @@
+/*
+white #EFEEE3
+grey #888B87
+light brown #8D6D35
+brown #775732
+dark #1E252D
+*/
+
+/* .row {
+    border: solid 1px red;
+}
+
+.col, .col-1 {
+    border: solid 1px green;
+} */
+
+body {
+    background-color: #888B87;
+}
+
+.head-color {
+    color: #EFEEE3;
+    background-color: #1E252D;
+}
+
+.box-container {
+    color: #1E252D;
+    background-color: #EFEEE3;
+}
+
+.bi-plus-circle-fill {
+    font-size: 150%;
+}
+#plus-icon {
+    width: 5%;
+}
+.bi-plus-circle-fill:hover {
+    color: #888B87;
+}
+.submit-button {
+    border: hidden;
+}
+
+.bi-pencil-fill:hover {
+    color: #888B87;
+}
+
+.bi-trash-fill:hover {
+    color: #888B87;
+}
+
+.checklist-container1, .checklist-container2, .checklist-container3 {
+    height: 20em;
+}
+
+.checklist-container1 {
+    background-color: #ea9999;
+}
+
+.checklist-container2 {
+    background-color: #ffe599;
+}
+
+.checklist-container3 {
+    background-color: #b6d7a8;
+}
+
+.item-box {
+    border: solid 0.25em #888B87;
+}
+
+li {
+    list-style: none;
+    background-color: #1E252D1A;
+}
+
+.item-list-button {
+    color: #EFEEE3;
+    background-color: #1E252D;
+    border: hidden;
+    font-size: 120%;
+}
+
+.edit-item-button {
+    color: #1E252D;
+    background-color: transparent;
+    border: hidden;
+    font-size: 100%;
+}
+
+.list-item {
+    width: 100%;
+}
