@@ -71,7 +71,7 @@ body {
 
 li {
     list-style: none;
-    background-color: #1E252D1A;
+    word-wrap: break-word;
 }
 
 .item-list-button {
@@ -81,13 +81,41 @@ li {
     font-size: 120%;
 }
 
-.edit-item-button {
+.edit-item-button, .delete-item-button {
     color: #1E252D;
     background-color: transparent;
     border: hidden;
     font-size: 100%;
 }
 
-.list-item {
+/* .list-item {
     width: 100%;
+    background-color: #1E252D1A;
+}
+
+.list-item.hint {
+    width: 100%;
+    background-color: #43521b75;
+}
+
+.list-item.active {
+    width: 100%;
+    background-color: #521b1b75;
+} */
+
+
+
+#Item {
+    width: 100%;
+    background-color: #1E252D1A;
+}
+
+#Item.hint {
+    width: 100%;
+    background-color: #43521b75;
+}
+
+#Item.active {
+    width: 100%;
+    background-color: #521b1b75;
 }

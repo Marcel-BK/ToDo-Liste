@@ -1,22 +1,27 @@
 //---ADD LIST ITEM---
 
-const list = document.getElementById("item-list1");
+const list = document.getElementById("itemlist1");
 const inputForm = document.getElementById("input-form");
 
 const handleSubmit = (event) => {
     event.preventDefault();
     const inputValue = document.getElementById("add-todo-input").value;
     const newListItem = document.createElement("li");
-    newListItem.innerHTML = `<div id="Item" class="row list-item mx-auto mb-2" draggable="true" ondragstart="drag(event)">
+    newListItem.id = "Item";
+    newListItem.draggable = "true";
+    newListItem.ondragstart = "drag(event)";
+    newListItem.innerHTML = `<div class="row mx-auto mb-2"">
     <div class="col-1 px-1"><input class="my-2" type="checkbox"></div>
     <div class="col px-1" id="listItem">${inputValue}</div>
     <div class="col-1 px-0"><button id="edit-li" class="edit-item-button px-0 me-2"><i class="bi bi-pencil-fill"></i></button></div>
-    <div class="col-1 px-0"><button id="edit-li" class="edit-item-button px-0 me-2"><i class="bi bi-trash-fill"></i></button></div>
+    <div class="col-1 px-0"><button class="delete-item-button px-0 me-2"><i class="bi bi-trash-fill"></i></button></div>
     </div>`;
     list.append(newListItem);
     document.getElementById("add-todo-input").value = "";
 
 
+
+    //---EDIT LIST ITEM---
     
     const editLi = document.getElementById("edit-li");
 
@@ -31,6 +36,20 @@ const handleSubmit = (event) => {
     }
     
     editLi.addEventListener("click", editLiF);
+
+
+
+    //---DELETE LIST ITEM---
+
+    let deleteBtn = document.getElementsByClassName("delete-item-button");
+
+    Array.prototype.slice.call(deleteBtn).forEach(function(item) {
+
+  item.addEventListener("click", function(e) {
+    e.target.parentNode.parentNode.parentNode.remove()
+  });
+
+})
 };
 
 inputForm.addEventListener("submit", handleSubmit);
@@ -40,19 +59,10 @@ inputForm.addEventListener("submit", handleSubmit);
 
 //---DRAG & DROP---
 
-function allowDrop(ev) {
-    ev.preventDefault();
-}
-
-function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
-}
-
-function drop(ev) {
-    ev.preventDefault();
-    const data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-}
+new Sortable(itemlist1, {
+    animation: 150,
+    ghostClass: 'sortable-ghost'
+});
 
 
 
@@ -101,14 +111,3 @@ const editHead3 = (editEvent) => {
 }
 
 editHeader3.addEventListener("click", editHead3);
-
-
-
-
-
-
-{/* <li id="listItem" class="mb-2 px-2" draggable="true" ondragstart="drag(event)">
-<input class="me-2 my-2" type="checkbox">${inputValue}
-<i id="edit-li" class="bi bi-trash-fill float-end ms-1 my-1"></i>
-<i class="bi bi-pencil-fill float-end mx-1 my-1"></i>
-</li> */}
