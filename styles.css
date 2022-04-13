@@ -1,11 +1,3 @@
-/*
-white #EFEEE3
-grey #888B87
-light brown #8D6D35
-brown #775732
-dark #1E252D
-*/
-
 /* .row {
     border: solid 1px red;
 }
@@ -13,6 +5,11 @@ dark #1E252D
 .col, .col-1 {
     border: solid 1px green;
 } */
+
+
+
+
+/* ---MAIN STYLING--- */
 
 body {
     background-color: #888B87;
@@ -26,27 +23,6 @@ body {
 .box-container {
     color: #1E252D;
     background-color: #EFEEE3;
-}
-
-.bi-plus-circle-fill {
-    font-size: 150%;
-}
-#plus-icon {
-    width: 5%;
-}
-.bi-plus-circle-fill:hover {
-    color: #888B87;
-}
-.submit-button {
-    border: hidden;
-}
-
-.bi-pencil-fill:hover {
-    color: #888B87;
-}
-
-.bi-trash-fill:hover {
-    color: #888B87;
 }
 
 .checklist-container1, .checklist-container2, .checklist-container3 {
@@ -69,9 +45,30 @@ body {
     border: solid 0.25em #888B87;
 }
 
-li {
-    list-style: none;
-    word-wrap: break-word;
+
+
+
+/* ---BUTTONS--- */
+
+.bi-plus-circle-fill {
+    font-size: 150%;
+}
+#plus-icon {
+    width: 5%;
+}
+.bi-plus-circle-fill:hover {
+    color: #888B87;
+}
+.submit-button {
+    border: hidden;
+}
+
+.bi-pencil-fill:hover {
+    color: #888B87;
+}
+
+.bi-trash-fill:hover {
+    color: #888B87;
 }
 
 .item-list-button {
@@ -88,34 +85,41 @@ li {
     font-size: 100%;
 }
 
-/* .list-item {
-    width: 100%;
-    background-color: #1E252D1A;
+.SDList {
+    border: hidden;
+    color: #EFEEE3;
+    background-color: #1E252D;
+    font-size: 120%;
 }
 
-.list-item.hint {
-    width: 100%;
-    background-color: #43521b75;
+.SDList:hover {
+    color: #888B87;
 }
 
-.list-item.active {
-    width: 100%;
-    background-color: #521b1b75;
-} */
 
 
+/* ---ITEM STYLING--- */
+
+li {
+    list-style: none;
+    word-wrap: break-word;
+}
 
 #Item {
     width: 100%;
     background-color: #1E252D1A;
 }
 
-#Item.hint {
+.placeholder {
     width: 100%;
-    background-color: #43521b75;
-}
+    height: 1.7em;
+    margin-bottom: 0.5em;
+    border: 1px solid #1e252d;
+    background-color: #1e252d41;
+  }
 
-#Item.active {
-    width: 100%;
-    background-color: #521b1b75;
-}
+/* ---CHECKED ITEM--- */
+input[type=checkbox]:checked + div.checked {
+    color:#1E252D80;
+    text-decoration: line-through;
+  }

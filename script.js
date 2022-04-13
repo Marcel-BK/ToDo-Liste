@@ -11,14 +11,20 @@ const handleSubmit = (event) => {
     newListItem.draggable = "true";
     newListItem.ondragstart = "drag(event)";
     newListItem.innerHTML = `<div class="row mx-auto mb-2"">
-    <div class="col-1 px-1"><input class="my-2" type="checkbox"></div>
-    <div class="col px-1" id="listItem">${inputValue}</div>
+    <input class="col-1 px-1 my-2" type="checkbox">
+    <div class="col px-1 checked" id="listItem">${inputValue}</div>
     <div class="col-1 px-0"><button id="edit-li" class="edit-item-button px-0 me-2"><i class="bi bi-pencil-fill"></i></button></div>
     <div class="col-1 px-0"><button class="delete-item-button px-0 me-2"><i class="bi bi-trash-fill"></i></button></div>
     </div>`;
     list.append(newListItem);
     document.getElementById("add-todo-input").value = "";
 
+    // `<div class="row mx-auto mb-2"">
+    // <div class="col-1 px-1"><input class="my-2" type="checkbox"></div>
+    // <div class="col px-1 checked" id="listItem">${inputValue}</div>
+    // <div class="col-1 px-0"><button id="edit-li" class="edit-item-button px-0 me-2"><i class="bi bi-pencil-fill"></i></button></div>
+    // <div class="col-1 px-0"><button class="delete-item-button px-0 me-2"><i class="bi bi-trash-fill"></i></button></div>
+    // </div>`
 
 
     //---EDIT LIST ITEM---
@@ -56,13 +62,36 @@ inputForm.addEventListener("submit", handleSubmit);
 
 
 
-
 //---DRAG & DROP---
 
-new Sortable(itemlist1, {
-    animation: 150,
-    ghostClass: 'sortable-ghost'
+$(function() {
+        $("#itemlist1, #itemlist2, #itemlist3").sortable({
+          connectWith: "ul",
+          placeholder: "placeholder",
+          delay: 150
+        })
+        .disableSelection()
+        .dblclick( function(e){
+          var item = e.target;
+          if (e.currentTarget.id === 'itemlist1') {
+            //move from il1 to il2
+            $(item).fadeOut('fast', function() {
+              $(item).appendTo($('#itemlist2')).fadeIn('slow');
+            });
+          } else {
+            //move from il2 to il1
+            $(item).fadeOut('fast', function() {
+              $(item).appendTo($('#itemlist1')).fadeIn('slow');
+            });
+          }
+        });
 });
+
+
+// new Sortable(itemlist1,  {
+//     animation: 150,
+//     ghostClass: 'sortable-ghost'
+// });
 
 
 
@@ -111,3 +140,36 @@ const editHead3 = (editEvent) => {
 }
 
 editHeader3.addEventListener("click", editHead3);
+
+
+
+//---LOCAL STORAGE---
+
+$(document).ready(function() {
+
+  $("#saveAll").click(function(e) {
+    e.preventDefault();
+    var listContents = [];
+    $("ul").each(function(){
+       listContents.push(this.innerHTML);
+    })
+    localStorage.setItem('todoList', JSON.stringify(listContents));
+  });
+
+  $("#clearAll").click(function(e) {
+    e.preventDefault();
+    localStorage.clear();
+    location.reload();
+  });
+
+  loadToDo();
+
+  function loadToDo() {
+    if (localStorage.getItem('todoList')){
+        var listContents = JSON.parse(localStorage.getItem('todoList'));
+        $("ul").each(function(i){
+          this.innerHTML = listContents [i];
+        })
+    }
+  }
+});
